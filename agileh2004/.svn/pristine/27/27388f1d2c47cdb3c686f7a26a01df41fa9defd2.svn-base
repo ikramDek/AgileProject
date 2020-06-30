@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="30.0" maxWidth="-Infinity" minHeight="30.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MenuUIController">
+   <children>
+      <Pane fx:id="pane" maxHeight="30.0" maxWidth="-Infinity" minHeight="30.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="800.0">
+         <children>
+            <MenuBar fx:id="menu" maxHeight="30.0" maxWidth="-Infinity" minHeight="30.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="800.0">
+              <menus>
+                <Menu fx:id="file" mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#newPage" text="New" />
+                        <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Save" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveAsFile" text="Save As" />
+                        <MenuItem mnemonicParsing="false" onAction="#importFile" text="Import" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Export" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Quit" />
+                  </items>
+                </Menu>
+                <Menu fx:id="edit" mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem fx:id="undoMenuItem" disable="true" mnemonicParsing="false" onAction="#undoAction" text="Undo" />
+                    <MenuItem fx:id="redoMenuItem" disable="true" mnemonicParsing="false" onAction="#redoAction" text="redo" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="copyMenuItem" mnemonicParsing="false" onAction="#copyAction" text="Copy" />
+                        <MenuItem fx:id="pastMenuItem" mnemonicParsing="false" onAction="#pastAction" text="Paste" />
+                        <MenuItem fx:id="clear" mnemonicParsing="false" onAction="#clearCanevas" text="Clear" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <RadioMenuItem fx:id="historyMenuItem" mnemonicParsing="false" onAction="#toggleHistory" text="History" />
+                  </items>
+                </Menu>
+                <Menu fx:id="layout" mnemonicParsing="false" text="Layout">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#newLayout" text="New layout" />                                      
+                    <MenuItem mnemonicParsing="false" onAction="#deleteLayout" text="Delete selected layout" />                                      
+                    <MenuItem mnemonicParsing="false" onAction="#moveLayoutForward" text="Move forward" />
+                     <MenuItem mnemonicParsing="false" onAction="#moveLayoutToFront" text="Move to front" />
+                     <MenuItem mnemonicParsing="false" onAction="#moveLayoutBackward" text="Move backward" />
+                     <MenuItem mnemonicParsing="false" onAction="#moveLayoutToBack" text="Move to back" />
+                     <MenuItem mnemonicParsing="false" onAction="#displayAll" text="Display all" />
+                     <MenuItem mnemonicParsing="false" onAction="#displaySelected" text="Display Selected" />                    
+                    <Menu id="selectLayout" fx:id="selectLayout" mnemonicParsing="false" onAction="#selectLayout" text="Select layout">
+                     <items>
+                     </items>
+                  	</Menu>
+            
+                    <MenuItem mnemonicParsing="false" text="Turn Autogrid off" />
+                        <Menu fx:id="showRules" mnemonicParsing="false" text="show rules">
+                           <items>
+                              <CheckMenuItem fx:id="rulerInCm" mnemonicParsing="false" onAction="#showRulesInCM" text="rules in cm" />
+                              <CheckMenuItem fx:id="rulerInInches" mnemonicParsing="false" onAction="#showRulerInInches" text="rules in inches" />
+                           </items>
+                        </Menu>
+                        <RadioMenuItem fx:id="showGrid" mnemonicParsing="false" onAction="#showGridLines" text="Show gridlines" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Fit to window" />
+                  </items>
+                </Menu>
+                  <Menu fx:id="arrange" mnemonicParsing="false" text="Arrange">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#moveForward" text="Move forward" />
+                        <MenuItem mnemonicParsing="false" onAction="#moveToFront" text="Move to front" />
+                        <MenuItem mnemonicParsing="false" onAction="#moveBackward" text="Move backward" />
+                        <MenuItem mnemonicParsing="false" onAction="#moveToBack" text="Move to back" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="rotate" mnemonicParsing="false" onAction="#rotateSelected" text="Rotate" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#horzFlip" text="Flip Horizontal" />
+                        <MenuItem mnemonicParsing="false" onAction="#vertFlip" text="Flip Vertical" />
+                     </items>
+                  </Menu>
+                  <Menu fx:id="pen" mnemonicParsing="false" onAction="#selectedPen" text="Stroke">
+                     <items>
+                        <MenuItem fx:id="unPoint" mnemonicParsing="false" text="1 point" />
+                        <MenuItem fx:id="deuxPoints" mnemonicParsing="false" text="2 point" />
+                        <MenuItem fx:id="quatrePoints" mnemonicParsing="false" text="4 point" />
+                        <MenuItem fx:id="sixPoints" mnemonicParsing="false" text="6 point" />
+                        <MenuItem fx:id="huitPoints" mnemonicParsing="false" text="8 point" />
+                        <MenuItem fx:id="dixPoints" mnemonicParsing="false" text="10 point" />
+                     </items>
+                  </Menu>
+				  <Menu fx:id="mode" mnemonicParsing="false" text="Drawing Mode">
+                     <items>
+                        <CheckMenuItem fx:id="activate" mnemonicParsing="false" onAction="#activate" selected="true" text="Center and radius" />
+                        <CheckMenuItem fx:id="desactivate" mnemonicParsing="false" onAction="#activate" text="top left and bottom right" />
+                     </items>
+                  </Menu>
+                 <Menu mnemonicParsing="false" text="Custom Shape">
+                     <items>
+                       <MenuItem mnemonicParsing="false" onAction="#makeCustomShape" text="Make selection as Custom Shape" />
+                        <Menu id="customShapesList" fx:id="customShapesList" mnemonicParsing="false" text="Custom shapes list">
+	                     <items>
+	                     </items>
+	                  	</Menu>
+                        <Menu id="deleteCustomShapes" fx:id="deleteCustomShapes" mnemonicParsing="false" text="Delete custom shapes">
+	                     <items>
+	                     </items>
+	                  	</Menu>
+	                 </items>
+                  </Menu>
+                  <Menu fx:id="group" mnemonicParsing="false" text="Group/Ungroup">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#groupSelection" text="group" />
+                        <MenuItem mnemonicParsing="false" onAction="#ungroupSelection" text="ungroup" />
+                     </items>
+                  </Menu> 
+                  <Menu mnemonicParsing="false" text="l3iba">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#l3iba" text="l3iba" />
+                     </items>
+                  </Menu>                  
+                  <Menu mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Developed by" />
+                        <MenuItem mnemonicParsing="false" text="Version" />
+                     </items>
+                  </Menu>
+                 
+              </menus>
+            </MenuBar>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+    <ComposedShape>
+        <HorizontalTriangle>
+            <HorizontalTriangle LayoutName="0.0" endPositionX="363.0" endPositionY="223.0" fillB="0.0" fillG="0.0" fillOpacity="0.0" fillR="0.0" rotateValue="360.0" startPositionX="249.0" startPositionY="97.0" strockB="0.0" strockG="0.0" strockR="0.0" strokeSize="1.0" topLeftX="249.0" topLeftY="97.0"/>
+        </HorizontalTriangle>
+        <MyCircle>
+            <MyCircle LayoutName="0.0" endPositionX="386.0116263352131" endPositionY="260.0116263352131" fillB="0.0" fillG="0.0" fillOpacity="0.0" fillR="0.0" rotateValue="0.0" startPositionX="299.9883736647869" startPositionY="173.98837366478688" strockB="0.0" strockG="0.0" strockR="0.0" strokeSize="1.0" topLeftX="299.9883736647869" topLeftY="173.98837366478688"/>
+        </MyCircle>
+        <MyCircle>
+            <MyCircle LayoutName="0.0" endPositionX="298.0116263352131" endPositionY="255.01162633521312" fillB="0.0" fillG="0.0" fillOpacity="0.0" fillR="0.0" rotateValue="0.0" startPositionX="211.98837366478688" startPositionY="168.98837366478688" strockB="0.0" strockG="0.0" strockR="0.0" strokeSize="1.0" topLeftX="211.98837366478688" topLeftY="168.98837366478688"/>
+        </MyCircle>
+    </ComposedShape>
+</root>

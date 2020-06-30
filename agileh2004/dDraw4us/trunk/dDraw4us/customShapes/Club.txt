@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+    <ComposedShape>
+        <MyRectangle>
+            <MyRectangle LayoutName="1.0" endPositionX="2.1" endPositionY="2.1" fillB="0.0" fillG="0.0" fillOpacity="1.0" fillR="0.0" rotateValue="0.0" startPositionX="1.1" startPositionY="1.1" strockB="0.0" strockG="0.0" strockR="0.0" strokeSize="2.1" topLeftX="1.1" topLeftY="1.1"/>
+        </MyRectangle>
+        <MyRectangle>
+            <MyRectangle LayoutName="1.0" endPositionX="2.1" endPositionY="2.1" fillB="0.0" fillG="0.0" fillOpacity="1.0" fillR="0.0" rotateValue="0.0" startPositionX="1.1" startPositionY="1.1" strockB="0.0" strockG="0.0" strockR="0.0" strokeSize="2.1" topLeftX="1.1" topLeftY="1.1"/>
+        </MyRectangle>
+    </ComposedShape>
+</root>

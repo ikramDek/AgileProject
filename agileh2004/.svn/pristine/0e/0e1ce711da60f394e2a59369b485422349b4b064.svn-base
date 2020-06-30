@@ -1,0 +1,678 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import org.junit.jupiter.api.Test;
+
+import application.model.Layout;
+import javafx.scene.input.KeyCode;
+import javafx.scene.shape.Shape;
+
+class menuUIControllerTestFX extends TestFXBase {
+
+
+	@Test
+	void testSelectedPen() {
+		Shape shape = drawFirstShapeAndSelectIt();
+		clickOn("#pen");
+
+		clickOn("#huitPoints");
+
+		assertTrue(shape.getStrokeWidth() ==8);
+	}
+
+	@Test
+	void testRotateSelected() {
+		Shape shape = drawFirstShapeAndSelectIt();
+		assertTrue(shape.getRotate() == 0);
+
+		clickOn("#arrange");
+
+		clickOn("#rotate");
+
+	}
+
+	@Test
+	void testClearCanevas() {
+		drawFirstShapeAndSelectIt();
+		assertNotNull(mainController.getMenuController().getCanevasController().getSelectedShape());
+
+		clickOn("#edit");
+
+		clickOn("#clear");
+
+		assertNull(mainController.getMenuController().getCanevasController().getSelectedShape());
+	}
+
+	@Test
+	void testShowRulesInCM() {
+		clickOn("#layout");
+
+		clickOn("#showRules");
+
+		clickOn("rules in cm");
+
+		assertTrue(mainController.getMenuController().isInCM());
+	}
+
+
+	@Test
+	void testActivate() {
+		clickOn("#mode");
+
+		clickOn("#activate");
+
+		sleep(500);
+		assertTrue(mainController.getMenuController().getCanevasController().isUsingCenter());
+
+		clickOn("#mode");
+
+		clickOn("#desactivate");
+
+	}
+
+	@Test
+	void testMoveToFront() {
+		Shape shape1 = drawFirstShapeAndSelectIt();
+		assertNotNull(shape1);
+		Shape shape2 = drawSecondShapeAndSelectIt();
+		assertNotNull(shape2);
+
+		clickOn("Arrange");
+
+		clickOn("Move to front");
+
+		assertTrue(mainController.getCanevasController().getAllShapes().get(1).getSingleShapeList().get(0).getShape().equals(shape2));
+
+	}
+
+	@Test
+	void testMoveToBack() {
+		Shape shape1 = drawFirstShapeAndSelectIt();
+		assertNotNull(shape1);
+		Shape shape2 = drawSecondShapeAndSelectIt();
+		assertNotNull(shape2);
+
+		clickOn("Arrange");
+
+		clickOn("Move to back");
+
+		assertTrue(mainController.getCanevasController().getAllShapes().get(0).getSingleShapeList().get(0).getShape().equals(shape2));
+
+	}
+
+	@Test
+	void testGetCanevasController() {
+		assertNotNull(mainController.getMenuController().getCanevasController());
+	}
+
+	@Test
+	void testUndoAction() {
+		drawFirstShapeAndSelectIt();
+
+		assertTrue(mainController.getMenuController().getCanevasController().getAllShapes().size() == 1);
+
+		clickOn("#edit");
+
+		clickOn("#undoMenuItem");
+
+
+	}
+
+	@Test
+	void testRedoAction() {
+		drawFirstShapeAndSelectIt();
+
+		assertTrue(mainController.getMenuController().getCanevasController().getAllShapes().size() == 1);
+
+		clickOn("#edit");
+
+		clickOn("#undoMenuItem");
+
+		clickOn("#edit");
+
+		clickOn("#redoMenuItem");
+
+		sleep(500);
+		assertTrue(mainController.getMenuController().getCanevasController().getAllShapes().size() == 1);
+
+	}
+
+	@Test
+	void testShowRulerInInches() {
+		clickOn("#layout");
+
+		moveTo("#showRules");
+
+		moveBy(65, 0);
+
+		moveBy(30, 0);
+
+		clickOn("rules in inches");
+
+		assertFalse(mainController.getMenuController().isInCM());
+
+	}
+
+	@Test
+	void testCopyPasetAction() {
+		drawFirstShapeAndSelectIt();
+
+		clickOn("#edit");
+
+		clickOn("Copy");
+
+		assertEquals( 1, mainController.getCanevasController().getAllShapes().size());
+
+		clickOn("#edit");
+
+		clickOn("Paste");
+
+		assertEquals( 2, mainController.getCanevasController().getAllShapes().size());
+	}
+
+	@Test
+	void testMoveBackward() {
+		Shape shape1 = drawFirstShapeAndSelectIt();
+		assertNotNull(shape1);
+		Shape shape2 = drawSecondShapeAndSelectIt();
+		assertNotNull(shape2);
+
+		clickOn("Arrange");
+
+		clickOn("Move backward");
+
+		assertTrue(mainController.getCanevasController().getAllShapes().get(0).getSingleShapeList().get(0).getShape().equals(shape2));
+
+	}
+
+	@Test
+	void testMoveForward() {
+		Shape shape1 = drawFirstShapeAndSelectIt();
+		assertNotNull(shape1);
+		Shape shape2 = drawSecondShapeAndSelectIt();
+		assertNotNull(shape2);
+
+		clickOn("Arrange");
+
+		clickOn("Move forward");
+
+		assertTrue(mainController.getCanevasController().getAllShapes().get(1).getSingleShapeList().get(0).getShape().equals(shape2));
+
+	}
+
+	@Test
+	void testNewLayout() {
+
+		assertTrue(mainController.getCanevasController().getLayoutsList().size()==1);
+
+		clickOn("Layout");
+
+		clickOn("New layout");
+
+		assertTrue(mainController.getCanevasController().getLayoutsList().size()==2);		
+	}
+
+	@Test
+	void testDeleteLayout() {
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().size());
+
+		clickOn("Layout");
+
+		clickOn("New layout");
+
+		assertEquals(2,mainController.getCanevasController().getLayoutsList().size());	
+
+		clickOn("Layout");
+
+		clickOn("Select layout");
+
+		clickOn("Layout0");
+
+		clickOn("Layout");
+
+		clickOn("Delete selected layout");
+
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().size());
+
+	}
+
+	@Test
+	void testDisplaySelectedLayout() {
+		assertNotNull(mainController.getMenuController().getHistoryMenuItem());
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().size());
+
+		clickOn("Layout");
+
+		clickOn("New layout");
+
+		assertEquals(2,mainController.getCanevasController().getLayoutsList().size());	
+
+		clickOn("Layout");
+
+		clickOn("Select layout");
+
+		clickOn("Layout0");
+
+		clickOn("Layout");
+
+		clickOn("Display Selected");
+
+		assertEquals(true,mainController.getCanevasController().getLayoutsList().get(0).isDisplayed());
+
+		assertEquals(false,mainController.getCanevasController().getLayoutsList().get(1).isDisplayed());
+
+	}
+
+	@Test
+	void testDisplayAllLayout() {
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().size());
+
+		clickOn("Layout");
+
+		clickOn("New layout");
+
+		assertEquals(2,mainController.getCanevasController().getLayoutsList().size());	
+
+		clickOn("Layout");
+
+		clickOn("Select layout");
+
+		clickOn("Layout0");
+
+		clickOn("Layout");
+
+		clickOn("Display Selected");
+
+		assertEquals(true,mainController.getCanevasController().getLayoutsList().get(0).isDisplayed());
+
+		assertEquals(false,mainController.getCanevasController().getLayoutsList().get(1).isDisplayed());
+
+		clickOn("Layout");
+
+		clickOn("Display all");
+
+		assertEquals(true,mainController.getCanevasController().getLayoutsList().get(0).isDisplayed());
+
+		assertEquals(true,mainController.getCanevasController().getLayoutsList().get(1).isDisplayed());
+
+	}
+
+	@Test
+	void testShowGridLines() {
+
+		clickOn("Layout");
+
+		clickOn("Show gridlines");
+
+		assertTrue(mainController.getCanevasController().isUsingMagnetism());	
+
+	}
+
+	@Test
+	void testMoveLayoutToFront() {
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().size());
+
+		clickOn("Layout");
+
+		clickOn("New layout");
+
+		assertEquals(2,mainController.getCanevasController().getLayoutsList().size());	
+
+		Layout x = mainController.getCanevasController().getLayoutsList().get(0);	
+
+		assertEquals(0,mainController.getCanevasController().getLayoutsList().indexOf(x));
+		clickOn("Layout");
+
+		clickOn("Select layout");
+
+		clickOn("Layout0");
+
+		clickOn("Layout");
+
+		clickOn("Move to front");
+
+		//assertEquals(1,mainController.getCanevasController().getLayoutsList().indexOf(x));
+	}
+
+	@Test
+	void testMoveLayoutToBack() {
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().size());
+
+		clickOn("Layout");
+
+		clickOn("New layout");
+
+		assertEquals(2,mainController.getCanevasController().getLayoutsList().size());	
+
+		Layout x = mainController.getCanevasController().getLayoutsList().get(1);	
+
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().indexOf(x));
+		clickOn("Layout");
+
+		clickOn("Select layout");
+
+		moveBy(65, 0);
+
+		moveBy(30, 0);
+
+		clickOn("Layout1");
+
+		clickOn("Layout");
+
+		clickOn("Move to back");
+
+		//assertEquals(0,mainController.getCanevasController().getLayoutsList().indexOf(x));
+	}
+
+	@Test
+	void testMoveLayoutForward() {
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().size());
+
+		clickOn("Layout");
+
+		clickOn("New layout");
+
+		assertEquals(2,mainController.getCanevasController().getLayoutsList().size());	
+
+		Layout x = mainController.getCanevasController().getLayoutsList().get(0);	
+
+		assertEquals(0,mainController.getCanevasController().getLayoutsList().indexOf(x));
+		clickOn("Layout");
+
+		clickOn("Select layout");
+
+		clickOn("Layout0");
+
+		clickOn("Layout");
+
+		clickOn("Move forward");
+
+		//assertEquals(1,mainController.getCanevasController().getLayoutsList().indexOf(x));
+	}
+	
+	@Test
+	void testVerticalFlip() {
+
+		drawFirstShapeAndSelectIt();
+		
+
+		clickOn("Arrange");
+		
+		clickOn("Flip Vertical");
+		
+		assertFalse(mainController.getCanevasController().getLayoutsList().isEmpty());
+	}
+	
+	@Test
+	void testHorizontalFlip() {
+
+		drawFirstShapeAndSelectIt();
+		
+
+		clickOn("Arrange");
+		
+		clickOn("Flip Horizontal");
+		
+		assertFalse(mainController.getCanevasController().getLayoutsList().isEmpty());
+	}
+
+	@Test
+	void testMoveLayoutBackward() {
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().size());
+
+		clickOn("Layout");
+
+		clickOn("New layout");
+
+		assertEquals(2,mainController.getCanevasController().getLayoutsList().size());	
+
+		Layout x = mainController.getCanevasController().getLayoutsList().get(1);	
+
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().indexOf(x));
+		clickOn("Layout");
+
+		clickOn("Select layout");
+
+		moveBy(65, 0);
+
+		moveBy(30, 0);
+
+		clickOn("Layout1");
+
+		clickOn("Layout");
+
+		clickOn("Move backward");
+
+		//assertEquals(0,mainController.getCanevasController().getLayoutsList().indexOf(x));
+	}
+
+
+	@Test
+	void testGroupSelection() {
+		Shape shape1 = drawFirstShapeAndSelectIt();
+		assertNotNull(shape1);
+
+		Shape shape2 = drawSecondShapeAndSelectIt();
+		assertNotNull(shape2);		
+		clickOn("#selectBtn");
+
+		moveBy(60,0);
+
+		drag();
+
+		moveBy(400, -200);
+
+		drop();
+
+		assertEquals(2,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+
+		clickOn("Group/Ungroup");
+
+		clickOn("group");
+
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+
+		Shape shape3 = drawSecondShapeAndSelectIt();
+
+		assertEquals(2,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+
+		clickOn("#selectBtn");
+
+		moveBy(60,0);
+
+		drag();
+
+		moveBy(400, -200);
+
+		drop();
+		
+		clickOn("Group/Ungroup");
+
+		clickOn("group");
+
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+
+
+	}
+
+	@Test
+	void testUngroupSelection() {
+		Shape shape1 = drawFirstShapeAndSelectIt();
+		assertNotNull(shape1);
+
+		Shape shape2 = drawSecondShapeAndSelectIt();
+		assertNotNull(shape2);		
+		clickOn("#selectBtn");
+
+		moveBy(60,0);
+
+		drag();
+
+		moveBy(400, -200);
+
+		drop();
+
+		assertEquals(2,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+
+		clickOn("Group/Ungroup");
+
+		clickOn("group");
+
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+
+		clickOn("#cursorBtn");
+
+		
+		clickOn(shape2);
+		
+		clickOn("Group/Ungroup");
+
+		clickOn("ungroup");
+
+		assertEquals(2,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+	
+		
+	}
+	
+	@Test
+	void testNewPage() {
+		assertEquals(0,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+
+		clickOn("File");
+
+		clickOn("New");
+
+		assertEquals(0,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+
+		drawFirstShapeAndSelectIt();
+		
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+
+		clickOn("File");
+
+		clickOn("New");
+		
+		clickOn("No");
+
+		assertEquals(0,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+
+	}
+	
+	
+	@Test
+	void testManipulateGroup() {
+		Shape shape1 = drawFirstShapeAndSelectIt();
+		assertNotNull(shape1);
+
+		Shape shape2 = drawSecondShapeAndSelectIt();
+		assertNotNull(shape2);		
+		clickOn("#selectBtn");
+
+		moveBy(60,0);
+
+		drag();
+
+		moveBy(400, -200);
+
+		drop();
+
+		assertEquals(2,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+
+		clickOn("Group/Ungroup");
+
+		clickOn("group");
+
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+
+		Shape shape3 = drawSecondShapeAndSelectIt();
+
+		assertEquals(2,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+
+		clickOn("#selectBtn");
+
+		moveBy(60,0);
+
+		drag();
+
+		moveBy(400, -200);
+
+		drop();
+		
+		clickOn("Group/Ungroup");
+
+		clickOn("group");
+
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+
+		clickOn(mainController.getCanevasController().getLayoutsList().get(0).getShape(0).getSingleShapeList().get(0).getShape()) ;
+		
+		press(KeyCode.A);
+		
+		press(KeyCode.W);
+		
+		press(KeyCode.S);
+		
+		press(KeyCode.D);
+		
+		press(KeyCode.R);
+		
+		press(KeyCode.E);
+		
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+
+		clickOn("#flipVert");
+		assertEquals(1,mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+
+		
+		
+	}
+	
+	@Test
+	void testHistory() {
+		drawFirstShapeAndSelectIt();
+
+		assertTrue(mainController.getMenuController().getCanevasController().getAllShapes().size() == 1);
+
+		clickOn("Edit");
+		
+		clickOn("History");
+
+		assertTrue(mainController.getMenuController().getHistoryStage().isShowing());
+		
+		clickOn("Edit");
+		
+		clickOn("History");
+
+		assertFalse(mainController.getMenuController().getHistoryStage().isShowing());
+	}
+	
+	@Test
+	void testMakeCustomShape() {
+		Shape shape1 = drawFirstShapeAndSelectIt();
+		assertNotNull(shape1);
+
+		Shape shape2 = drawSecondShapeAndSelectIt();
+		assertNotNull(shape2);		
+		clickOn("#selectBtn");
+
+		moveBy(60,0);
+
+		drag();
+
+		moveBy(400, -200);
+
+		drop();
+
+		assertNotEquals(0, mainController.getCanevasController().getLayoutsList().get(0).getShapesList().size());
+		
+		clickOn("Custom Shape");
+
+		clickOn("Make selection as Custom Shape");
+
+	}
+
+}

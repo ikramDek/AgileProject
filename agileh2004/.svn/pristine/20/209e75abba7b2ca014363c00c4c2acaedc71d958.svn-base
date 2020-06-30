@@ -1,0 +1,87 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import application.model.MyTriangle;
+import application.model.VerticalTriangle;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
+import javafx.scene.shape.StrokeLineCap;
+
+class MyTriangleTest {
+	MyTriangle triangle;
+	Polygon polygone;
+	@BeforeAll
+	public static void init() {
+		System.out.println("TEST STARTED");
+	}
+	@AfterAll
+	public static void destroy() {
+		System.out.println("TEST STOPPED");
+	}
+	@BeforeEach
+	public void buildUp() {
+		triangle= new VerticalTriangle();
+		assertNotNull(triangle);
+		polygone= new Polygon(1, 1, 3,3,6,6);
+	}
+	
+	@AfterEach
+	public void tearDown() {
+		triangle=null;
+		assertNull(triangle);
+	}
+	
+	@Test
+	public void testCreateShapeClone() {
+		assertNotNull(triangle.createShapeClone(polygone));
+	}
+	
+	@Test
+	public void testCreateShapeForImport() {
+		triangle.setShape(new Polygon());
+		triangle.resizeOnPressed(1., 1.);
+		assertEquals(Color.RED, triangle.getShape().getStroke());
+		assertEquals(5, triangle.getShape().getStrokeWidth());
+	}
+	
+	@Test
+	void MoveShapeTest() {
+		triangle.setShape(new Polygon());
+		Polygon c = (Polygon) (triangle.getShape());
+		double r = c.getBoundsInLocal().getMinX();
+		
+		triangle.moveShape(1, 1);
+		assertEquals(r, c.getBoundsInLocal().getMinX());
+	}
+	
+	@Test
+	void dragOnDraggedTest() {
+		triangle.setShape(polygone);
+		triangle.dragOnDragged(1.1, 1.1, triangle.getShape());
+		assertNotNull(triangle);
+	}
+	
+	@Test
+	void resizeOnReleasedTest() {
+		triangle.setShape(polygone);
+		triangle.resizeOnReleased(Color.BLACK, 1.1);
+		assertEquals(StrokeLineCap.BUTT, triangle.getShape().getStrokeLineCap());
+	}
+	
+	@Test
+	void resizeOnDraggedTest() {
+		triangle.setShape(polygone);
+		triangle.updateFields();
+		triangle.resizeOnDragged(1.,1.,polygone);
+		assertEquals(StrokeLineCap.BUTT, triangle.getShape().getStrokeLineCap());
+	}
+	
+	
+	
+
+}

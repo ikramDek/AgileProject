@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+    <ComposedShape>
+        <VerticalTriangle>
+            <VerticalTriangle LayoutName="0.0" endPositionX="227.62408447265625" endPositionY="211.77008056640625" fillB="0.0" fillG="0.0" fillOpacity="1.0" fillR="0.0" rotateValue="0.0" startPositionX="209.5" startPositionY="182.22991943359375" strockB="0.10196078568696976" strockG="0.4000000059604645" strockR="0.7019608020782471" strokeSize="4.0" topLeftX="209.5" topLeftY="182.22991943359375"/>
+        </VerticalTriangle>
+        <VerticalTriangle>
+            <VerticalTriangle LayoutName="0.0" endPositionX="329.1653747558594" endPositionY="214.91793823242188" fillB="0.0" fillG="0.0" fillOpacity="1.0" fillR="0.0" rotateValue="0.0" startPositionX="205.5" startPositionY="167.08206176757812" strockB="0.10196078568696976" strockG="0.4000000059604645" strockR="0.7019608020782471" strokeSize="4.0" topLeftX="205.5" topLeftY="167.08206176757812"/>
+        </VerticalTriangle>
+    </ComposedShape>
+</root>

@@ -1,0 +1,345 @@
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
+
+import javafx.scene.shape.Shape;
+
+class menuUIControllerTestFX extends TestFXBase {
+
+	@Test
+	void testCopyPasteAction() {
+		drawShapeAndSelectIt();
+		clickOn("#edit");
+
+		clickOn("#copyMenuItem");
+
+		clickOn("#edit");
+
+		clickOn("#pastMenuItem");
+
+		assertTrue(mainController.getMenuController().getCanevasController().getAllShapes().size() == 2);
+	}
+
+	@Test
+	void testSelectedPen() {
+		Shape shape = drawShapeAndSelectIt();
+		clickOn("#pen");
+
+		clickOn("#huitPoints");
+
+		assertTrue(shape.getStrokeWidth() == 8);
+	}
+
+	@Test
+	void testRotateSelected() {
+		Shape shape = drawShapeAndSelectIt();
+		assertTrue(shape.getRotate() == 0);
+
+		clickOn("#arrange");
+
+		clickOn("#rotate");
+
+		assertTrue(shape.getRotate() != 0);
+	}
+
+	@Test
+	void testClearCanevas() {
+		drawShapeAndSelectIt();
+		assertFalse(mainController.getMenuController().getCanevasController().getAllShapes().isEmpty());
+
+		clickOn("#edit");
+
+		clickOn("#clear");
+
+		assertTrue(mainController.getMenuController().getCanevasController().getAllShapes().isEmpty());
+	}
+
+	@Test
+	void testShowRulesInCM() {
+		clickOn("#layout");
+
+		clickOn("#showRules");
+
+		clickOn("#rulerInCm");
+		assertTrue(mainController.getMenuController().isInCM());
+	}
+
+	@Test
+	void testShowRulerInInches() {
+		clickOn("#layout");
+
+		moveTo("#showRules");
+
+		moveBy(80, 0);
+		assertNotNull(mainController.getMenuController().getRulerInCm());
+	}
+
+	@Test
+	void testShowThenHideRules() {
+		clickOn("#layout");
+
+		clickOn("#showRules");
+
+		clickOn("#rulerInCm");
+
+		clickOn("#layout");
+
+		clickOn("#showRules");
+
+		clickOn("#rulerInCm");
+
+		assertNotNull(mainController.getMenuController().getRulerInCm());
+	}
+
+	@Test
+	void testActivate() {
+		clickOn("#mode");
+
+		clickOn("#activate");
+
+		assertTrue(mainController.getMenuController().getCanevasController().isUsingCenter());
+
+		clickOn("#mode");
+
+		clickOn("#desactivate");
+
+		assertFalse(mainController.getMenuController().getCanevasController().isUsingCenter());
+
+	}
+
+	@Test
+	void testMoveToFront() {
+		drawShapeAndSelectIt();
+
+	}
+
+	@Test
+	void testMoveToBack() {
+		drawShapeAndSelectIt();
+
+	}
+
+	@Test
+	void testGetCanevasController() {
+		assertNotNull(mainController.getMenuController().getCanevasController());
+	}
+
+	@Test
+	void testUndoAction() {
+		drawShapeAndSelectIt();
+
+		assertTrue(mainController.getMenuController().getCanevasController().getAllShapes().size() == 1);
+
+		clickOn("#edit");
+
+		clickOn("#undoMenuItem");
+
+
+	}
+
+	@Test
+	void testRedoAction() {
+		drawShapeAndSelectIt();
+
+		assertTrue(mainController.getMenuController().getCanevasController().getAllShapes().size() == 1);
+
+		clickOn("#edit");
+
+		clickOn("#undoMenuItem");
+
+		clickOn("#edit");
+
+		clickOn("#redoMenuItem");
+
+		sleep(500);
+		assertTrue(mainController.getMenuController().getCanevasController().getAllShapes().size() == 1);
+
+	}
+	
+//	@Test
+//	void testMoveLayoutToFront() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testMoveLayoutToBack() {
+//		fail("Not yet implemented");
+//	}
+//	@Test
+//	void testSaveAsFile() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testNewPage() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testSaveFile() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testImportFile() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testOpenFile() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testSaveAsAction() {
+//		fail("Not yet implemented");
+//	}
+//	
+//	@Test
+//	void testUpdateMenuItemState() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testSetWidth() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testMoveForward() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testDisplayAll() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testDisplaySelected() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testMoveBackward() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testMoveLayoutForward() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testMoveLayoutBackward() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testGetAnchorPane() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testGetPane() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testGetMenu() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testSetChangesController() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testSetRulerUIControler() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testSetVerticalRulerUIControler() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testDeleteLayout() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testNewLayout() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testShowGridLines() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testGetShowGrid() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testShowGridOnCanvas() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testGroupSelection() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testUngroupSelection() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testSelectLayout() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testRefreshSelectLayoutList() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testGetSelectedLayouts() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testCleanGridPane() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testGetSavingRepository() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testSetSavingRepository() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testIsInCM() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	void testSetInCM() {
+//		fail("Not yet implemented");
+//	}
+
+}

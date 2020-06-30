@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+    <ComposedShape>
+        <HorizontalTriangle>
+            <HorizontalTriangle LayoutName="0.0" endPositionX="452.0" endPositionY="211.0" fillB="0.0" fillG="0.0" fillOpacity="1.0" fillR="1.0" rotateValue="0.0" startPositionX="290.0" startPositionY="53.0" strockB="0.0" strockG="0.0" strockR="1.0" strokeSize="8.0" topLeftX="290.0" topLeftY="53.0"/>
+        </HorizontalTriangle>
+        <HorizontalTriangle>
+            <HorizontalTriangle LayoutName="0.0" endPositionX="451.0" endPositionY="383.0" fillB="0.0" fillG="0.0" fillOpacity="1.0" fillR="1.0" rotateValue="180.0" startPositionX="271.375" startPositionY="223.0" strockB="0.0" strockG="0.0" strockR="1.0" strokeSize="8.0" topLeftX="271.375" topLeftY="223.0"/>
+        </HorizontalTriangle>
+    </ComposedShape>
+</root>

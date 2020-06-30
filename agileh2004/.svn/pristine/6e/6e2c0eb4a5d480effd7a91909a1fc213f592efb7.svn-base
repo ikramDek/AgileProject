@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+    <ComposedShape>
+        <MyRoundedRectangle>
+            <MyRoundedRectangle LayoutName="0.0" endPositionX="201.0" endPositionY="192.0" fillB="0.0" fillG="0.0" fillOpacity="0.0" fillR="0.0" rotateValue="0.0" startPositionX="59.0" startPositionY="84.0" strockB="0.0" strockG="0.0" strockR="0.0" strokeSize="4.0" topLeftX="59.0" topLeftY="84.0"/>
+        </MyRoundedRectangle>
+        <MyEllipse>
+            <MyEllipse LayoutName="0.0" endPositionX="301.0" endPositionY="227.0" fillB="0.0" fillG="0.0" fillOpacity="0.0" fillR="0.0" rotateValue="0.0" startPositionX="191.0" startPositionY="75.0" strockB="0.0" strockG="0.0" strockR="0.0" strokeSize="4.0" topLeftX="191.0" topLeftY="75.0"/>
+        </MyEllipse>
+        <HorizontalTriangle>
+            <HorizontalTriangle LayoutName="0.0" endPositionX="736.9999999999999" endPositionY="420.33333333333337" fillB="0.0" fillG="0.0" fillOpacity="1.0" fillR="0.0" rotateValue="0.0" startPositionX="589.0" startPositionY="352.33333333333337" strockB="0.6000000238418579" strockG="0.20000000298023224" strockR="0.10196078568696976" strokeSize="10.0" topLeftX="589.0" topLeftY="352.33333333333337"/>
+        </HorizontalTriangle>
+        <VerticalTriangle>
+            <VerticalTriangle LayoutName="0.0" endPositionX="679.561279296875" endPositionY="437.0660400390625" fillB="0.0" fillG="0.0" fillOpacity="1.0" fillR="0.0" rotateValue="0.0" startPositionX="502.8333435058594" startPositionY="320.9339599609375" strockB="0.6000000238418579" strockG="0.20000000298023224" strockR="0.10196078568696976" strokeSize="10.0" topLeftX="502.8333435058594" topLeftY="320.9339599609375"/>
+        </VerticalTriangle>
+    </ComposedShape>
+</root>

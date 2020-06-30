@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+    <ComposedShape>
+        <MyRoundedRectangle>
+            <MyRoundedRectangle LayoutName="0.0" endPositionX="201.0" endPositionY="192.0" fillB="0.0" fillG="0.0" fillOpacity="0.0" fillR="0.0" rotateValue="0.0" startPositionX="59.0" startPositionY="84.0" strockB="0.0" strockG="0.0" strockR="0.0" strokeSize="4.0" topLeftX="59.0" topLeftY="84.0"/>
+        </MyRoundedRectangle>
+        <MyEllipse>
+            <MyEllipse LayoutName="0.0" endPositionX="301.0" endPositionY="227.0" fillB="0.0" fillG="0.0" fillOpacity="0.0" fillR="0.0" rotateValue="0.0" startPositionX="191.0" startPositionY="75.0" strockB="0.0" strockG="0.0" strockR="0.0" strokeSize="4.0" topLeftX="191.0" topLeftY="75.0"/>
+        </MyEllipse>
+    </ComposedShape>
+</root>

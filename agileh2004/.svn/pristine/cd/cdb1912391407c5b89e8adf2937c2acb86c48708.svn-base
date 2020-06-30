@@ -1,0 +1,104 @@
+package application.model;
+
+import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Shape;
+
+public class Custom extends SingleShape {
+
+	@Override
+	public void updateFields() {
+		this.startX = this.shape.getBoundsInParent().getMinX();
+		this.startY = this.shape.getBoundsInParent().getMinY();
+		
+		this.endX = this.shape.getBoundsInParent().getMaxX();
+		this.endY = this.shape.getBoundsInParent().getMaxY();
+		
+		this.rotate = this.shape.getRotate();
+	}
+
+	@Override
+	public void moveShape(int x, int y) {
+		shape.setLayoutX(shape.getLayoutX()+x);
+
+		shape.setLayoutY(shape.getLayoutY()+y);
+	}
+
+	@Override
+	public void flipShape(boolean value) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void flipComposedShape(boolean value, double d, double e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void enlarge() {
+		
+		shape.setScaleX(shape.getScaleX()+0.02);
+		shape.setScaleY(shape.getScaleY()+0.02);
+
+	}
+
+	@Override
+	public SingleShape clone1() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void createShape(boolean isUsingCenter, boolean isUsingMagnetism, GridPane gridPane) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Shape createShapeClone(Shape c) {
+		return Shape.union(c, c);
+	}
+
+	@Override
+	protected void createShapeForImport() {
+		updateFields();
+
+	}
+
+	@Override
+	public void dragOnDragged(double x, double y, Shape c) {
+		double offsetX = x - orgSceneX;
+		double offsetY = y - orgSceneY;
+		
+		if(this.isflipedX) {
+			offsetX=-offsetX;
+		}
+		if(this.isflipedY) {
+			offsetY=-offsetY;
+		}
+
+		shape.setLayoutX(shape.getLayoutX()+offsetX);
+
+		shape.setLayoutY(shape.getLayoutY()+offsetY);
+
+		
+		orgSceneX = x;
+		orgSceneY = y;
+
+	}
+
+	@Override
+	public SingleShape emptyClone() {
+		Custom tmpCustom  = new Custom();
+		tmpCustom.setShape(Shape.union(shape, shape));
+		return tmpCustom;
+	}
+
+	@Override
+	public void resizeOnDragged(double x, double y, Shape c) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

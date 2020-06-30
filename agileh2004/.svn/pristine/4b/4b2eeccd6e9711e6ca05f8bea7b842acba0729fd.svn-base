@@ -1,0 +1,288 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import javafx.scene.shape.Rectangle;
+import application.model.ColorFiller;
+import application.model.ComposedShape;
+import application.model.Filler;
+import application.model.MyRectangle;
+import application.model.SingleShape;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
+import javafx.scene.paint.Color;
+public class SingleShapeTest {
+	
+	private SingleShape shape;
+	//private Map<String, Double> properties ;
+	private HashMap<String, Double> properties;
+	private ColorFiller colorFiller;
+	Map<String, Double> properties1; 
+
+	
+	@BeforeAll
+	public static void init() {
+		System.out.println("TEST SHAPE STARTED");
+	}
+	
+	@BeforeEach
+	public void buildUp() {
+		shape = new MyRectangle();
+		properties= new HashMap<String, Double>();
+		colorFiller= new ColorFiller(Color.BLACK, shape);
+		properties1= new HashMap<String, Double>();
+		shape.setShape(new Rectangle());
+		assertNotNull(shape);
+		assertNotNull(properties);
+		assertNotNull(properties1);
+	}
+	
+	@AfterEach
+	public void tearDown() {
+		shape= null;
+		assertNull(shape);
+	}
+	
+	@AfterAll
+	public static void destroy() {
+		System.out.println("TEST SHAPE STOPED");
+	}
+	
+	@Test
+	void testShapeSelected() {
+		shape.setSelected(true);
+		assertTrue(shape.isSelected());
+
+	}
+	
+	@Test
+	void testProperties() {
+		properties.put("LayoutName", 1.0);
+		properties.put("strockR", 1.0);
+		properties.put("strockG", 1.0);
+		properties.put("strockB", 1.0);
+		properties.put("fillR", 1.0);
+		properties.put("fillG", 1.0);
+		properties.put("fillB", 1.0);
+		properties.put("fillOpacity", 1.0);
+		properties.put("startPositionX", 1.0);
+		properties.put("startPositionY", 1.0);
+		properties.put("endPositionX", 1.0);
+		properties.put("endPositionY", 1.0);
+		properties.put("topLeftX", 1.0);
+		properties.put("topLeftY", 1.0);
+		properties.put("rotateValue", 0.0);
+		properties.put("strokeSize", 1.0);
+		shape.setProperties(properties); 
+		properties.put("imageUrl", 1.0);
+		shape.setProperties(properties); 
+		shape.getShape();
+		assertNotNull(shape.getProperties());
+		assertNotNull(shape.getClone());
+	}
+
+	
+	@Test
+	public void startXTest() {
+		shape.setStartX(1.0);
+		assertEquals(1.0, shape.getStartX());
+		
+	}
+	
+	@Test
+	public void startYTest() {
+		shape.setStartY(1.0);
+		assertEquals(1.0, shape.getStartY());
+		
+	}
+	
+	@Test
+	public void endXTest() {
+		shape.setEndX(1.0);
+		assertEquals(1.0, shape.getEndX());
+		
+	}
+	@Test
+	public void endYTest() {
+		shape.setEndY(1.0);
+		assertEquals(1.0, shape.getEndY());
+		
+	}
+	
+	
+	@Test
+	public void StrokeTest() {
+		shape.setStrokeColor(Color.AZURE);
+		assertNotNull(shape.getStrokeColor());
+		
+	}
+	
+	@Test
+	public void StrokeSizeTest() {
+		shape.setStrokeSize(1);
+		assertEquals(1, shape.getStrokeSize());
+		
+	}
+	
+	@Test
+	public void propertiesTest() {
+		shape.setProperties(2.0, 2.0, 0.0, 0.0, null, 1.0, null, 1.0, "layout");
+		assertEquals("layout", shape.getLayout());
+		shape.applyRotation();
+		assertEquals(1.0, shape.getShape().getRotate());
+		shape.isInside(1.0, 1.0, 2.9, 4.0);
+		
+		
+	}
+
+	@Test
+	public void fillerTest() {
+		shape.setFiller(colorFiller);
+		
+		assertEquals(colorFiller, shape.getFiller());
+		
+	}
+	
+	@Test
+	public void getPropTest() {
+		shape.setStartX(1.1);
+		shape.setStartY(1.1);
+		shape.setEndX(1.1);
+		shape.setEndY(1.1);
+		shape.setFiller(colorFiller);
+		//shape.changeStrokeWidth(1);
+		//shape.getProperties();
+		
+		
+	}
+	
+	@Test
+	public void patternTest() {
+		shape.setPattern(true);
+		assertEquals(true, shape.isPattern());	
+	}
+	
+	@Test
+	public void rotateShapeTest() {
+		double init = shape.getShape().getRotate();
+		shape.rotateShape();
+		assertNotEquals(shape.getShape().getRotate(), init);	
+	}
+	
+	@Test
+	public void changeStrokeWidthTest() {
+		shape.changeStrokeWidth(2);
+		assertEquals(2, shape.getShape().getStrokeWidth());
+	}
+	
+	@Test
+	public void changeStrokeColorTest() {
+		shape.changeStrokeColor(Color.BLUE);
+		assertEquals(Color.BLUE, shape.getShape().getStroke());
+	}
+	
+	@Test
+	public void rootTest() {
+		ComposedShape cShape= new ComposedShape();
+		shape.setRoot(cShape);
+		assertEquals(cShape, shape.getRoot());
+		
+	}
+	@Test
+	public void setFillTest() {
+		shape.setFill(Color.BLUE);
+		assertEquals(Color.BLUE, shape.getShape().getFill());
+	}
+	
+	@Test
+	public void isInsideTest() {
+		shape.setProperties(2.0, 2.0, 0.0, 0.0, null, 1.0, null, 1.0, "layout");
+		assertTrue(shape.isInside(1.0, 1.0, 2.9, 4.0));
+		shape.setProperties(0.0, 0.0, 0.0, 0.0, null, 1.0, null, 1.0, "layout");
+		assertFalse(shape.isInside(1.0, 1.0, 2.9, 4.0));
+	}
+	
+	@Test 
+	public void getSingleShapeListTest() {
+		assertEquals(1, shape.getSingleShapeList().size());
+	}
+	@Test
+	public void onPressedTest() {
+		shape.onPressed(1.0, 4.0);
+		assertEquals(Color.RED, shape.getShape().getStroke());
+		assertEquals(5, shape.getShape().getStrokeWidth());
+	}
+	
+	@Test
+	public void resizeOnReleasedTest() {
+		shape.resizeOnReleased(Color.BLUE, 1.0);
+		assertEquals(Color.BLUE, shape.getShape().getStroke());
+		assertEquals(1.0, shape.getShape().getStrokeWidth());
+	}
+	
+	@Test
+	public void dragOnReleasedTest() {
+		shape.dragOnReleased(Color.BLUE, 1.0);
+		assertEquals(Color.BLUE, shape.getShape().getStroke());
+		assertEquals(1.0, shape.getShape().getStrokeWidth());
+	}
+	
+	@Test
+	public void setFillerTest() {
+		Filler filler= new ColorFiller(Color.BLUE, shape);
+		shape.setFiller(filler);
+		assertEquals(filler, shape.getFiller());
+	}
+	
+	@Test
+	public void arrangeStartAndEndXYTest() {
+		shape.setStartX(5.0);
+		shape.setStartY(4.0);
+		shape.setEndX(4.0);
+		shape.setEndY(3.0);
+		shape.arrangeStartAndEndXY();
+		assertEquals(4.0, shape.getStartX());
+	}
+	
+	@Test
+	public void getWidthHeightTest() {
+		shape.setStartX(4.0);
+		shape.setStartY(3.0);
+		shape.setEndX(5.0);
+		shape.setEndY(4.0);
+		assertEquals(1.0, shape.getWidth());
+		assertEquals(1, shape.getHeight());
+	}
+	
+	@Test
+	public void drawWithMagnetismTest() {
+		GridPane gridPane= new GridPane();
+		
+		for (int i = 0; i < 16; i++) {
+            RowConstraints rowConst = new RowConstraints();
+            rowConst.setPercentHeight(100.0 / 16);
+            gridPane.getRowConstraints().add(rowConst);         
+        }
+		for (int i = 0; i < 16; i++) {
+            ColumnConstraints colConst = new ColumnConstraints();
+            colConst.setPercentWidth(100.0 / 16);
+            gridPane.getColumnConstraints().add(colConst);   
+		}
+		System.out.println(gridPane.getWidth());
+		shape.setStartX(4.0);
+		shape.setStartY(3.0);
+		shape.setEndX(5.0);
+		shape.setEndY(4.0);
+		shape.drawWithMagnetism(gridPane);
+	}
+	
+}
+

@@ -1,0 +1,86 @@
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.jupiter.api.Assertions.assertNotNull;
+//import static org.junit.jupiter.api.Assertions.assertNull;
+//
+//import java.util.ArrayList;
+//
+//import org.junit.jupiter.api.AfterAll;
+//import org.junit.jupiter.api.AfterEach;
+//import org.junit.jupiter.api.BeforeAll;
+//import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.Test;
+//
+//import application.controller.CanevasController;
+//import application.controller.ChangesController;
+//import application.model.Layout;
+//
+//class ChangesControllerTest {
+//
+//	ChangesController changesController;
+//	CanevasController canevasController;
+//
+//	@BeforeAll
+//	public static void init() {
+//		System.out.println("TEST Changes Controller STARTED");
+//	}
+//
+//	@BeforeEach
+//	public void buildUp() {
+//		changesController = new ChangesController(new CanevasController());
+//		assertNotNull(changesController);
+//
+//	}
+//
+//	@AfterEach
+//	public void tearDown() {
+//		changesController = null;
+//		assertNull(changesController);
+//	}
+//
+//	@AfterAll
+//	public static void destroy() {
+//		System.out.println("TEST Changes Controller STOPED");
+//	}
+//
+//	@Test
+//	void testChangesController() {
+//		assertNotNull(changesController.getRedoList());
+//		assertNotNull(changesController.getUndoList());
+//	}
+//
+//	@Test
+//	void testGetUndoList() {
+//		assertNotNull(changesController.getUndoList());
+//		assertEquals(0, changesController.getUndoList().size());
+//	}
+//
+//	@Test
+//	void testGetRedoList() {
+//		assertNotNull(changesController.getRedoList());
+//		assertEquals(0, changesController.getRedoList().size());
+//	}
+//
+//	@Test
+//	void testUndo() {
+//		ArrayList<Layout> layoutLists = new ArrayList<>();
+//		layoutLists.add(new Layout("Layout0", true));
+//		layoutLists.add(new Layout("Layout1", true));
+//		changesController.getUndoList().add(layoutLists);
+//		assertEquals(1, changesController.getUndoList().size());
+//
+//	}
+//
+//	@Test
+//	void testRedo() {
+//		ArrayList<Layout> layoutLists = new ArrayList<>();
+//		layoutLists.add(new Layout("Layout0", true));
+//		layoutLists.add(new Layout("Layout1", true));
+//		changesController.getUndoList().add(layoutLists);
+//		changesController.redo();
+//		assertEquals(1, changesController.getUndoList().size());
+//	}
+//	
+//
+//	
+//
+//}

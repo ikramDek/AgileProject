@@ -1,0 +1,85 @@
+package application.model;
+
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
+
+public class VerticalTriangle extends MyTriangle {
+	
+	@Override
+	public void createShape(boolean isUsingCenter, boolean isUsingMagnetism, GridPane gridPane) {
+		initCircles();
+		if (isUsingMagnetism) {
+			drawWithMagnetism(gridPane);
+		}
+		if (isUsingCenter && !isUsingMagnetism) {
+			double centerX = startX;
+			double centerY = startY;
+
+			startX = 2 * centerX - endX;
+			startY = 2 * centerY - endY;
+		}
+		
+		arrangeStartAndEndXY();
+		
+		Double width = Math.abs(this.startX - this.endX);
+		Double height = Math.abs(this.startY - this.endY);
+		shape=new Polygon(startX, startY,
+							startX+width, endY-(height/2),
+							startX, endY);
+		shape.setStroke(strokeColor);
+		shape.setStrokeWidth(strokeSize);
+		filler.fill();
+		applyRotation();
+		
+		
+	}
+	
+	@Override
+	public void updateFields() {
+		Polygon c= (Polygon) shape;
+		this.startX = c.getBoundsInLocal().getMinX();
+		this.startY = c.getBoundsInLocal().getMinY();
+		this.endX = c.getBoundsInLocal().getMaxX();
+		this.endY = c.getBoundsInLocal().getMaxY();
+		this.strokeColor = (Color) c.getStroke();
+		this.strokeSize = c.getStrokeWidth();
+		this.rotate = c.getRotate();
+		
+	}
+
+	
+
+	@Override
+	public void enlarge() {
+		Double height = Math.abs(this.startY - this.endY);
+		Polygon vTriangle= (Polygon) shape;
+		vTriangle.getPoints().setAll(startX, startY,
+				endX+ENLARGE_CONST, endY-ENLARGE_CONST-(height/2),
+				startX, endY+ENLARGE_CONST);
+
+		updateFields();
+		
+	}	
+
+	@Override
+	public SingleShape clone1() {
+		return new VerticalTriangle();
+	}
+
+	
+
+	@Override
+	public SingleShape emptyClone() {
+		return new VerticalTriangle();
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "VerticalTriangle" ;
+	}
+	
+	
+	
+}

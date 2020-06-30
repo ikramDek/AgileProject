@@ -1,0 +1,50 @@
+package application.controller;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.prefs.BackingStoreException;
+import java.util.prefs.Preferences;
+
+import application.model.Canevas;
+
+public class StateController {
+	private static final String CONFIG_FILE_PATH = "src/main/resources/config.xml";
+	private Canevas canevas;
+	private CanevasController canevasController;
+	private MenuUIController menuController;
+
+	public StateController(CanevasController canevasController, MenuUIController menuController) {
+		this.canevasController = canevasController;
+		this.menuController = menuController;
+		this.loadState();
+	}
+
+	public void saveState() {
+		canevas = new Canevas(canevasController, menuController);
+		try {
+			canevas.getPrefs().exportNode(new FileOutputStream(CONFIG_FILE_PATH));
+
+		} catch (IOException | BackingStoreException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void loadState() {
+		Preferences preferences = Preferences.userNodeForPackage(Canevas.class);
+		try {
+			Preferences.importPreferences(new FileInputStream(CONFIG_FILE_PATH));
+		} catch (Exception e) {
+			this.saveState();
+			try {
+				Preferences.importPreferences(new FileInputStream(CONFIG_FILE_PATH));
+			} catch (Exception e1) {
+				// Show Exception Dialog
+				e1.printStackTrace();
+			}
+		}
+
+		canevas = new Canevas(preferences);
+		canevasController.updateScreenState(canevas);
+	}
+}

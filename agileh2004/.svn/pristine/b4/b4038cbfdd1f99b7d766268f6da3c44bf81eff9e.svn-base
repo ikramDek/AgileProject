@@ -1,0 +1,29 @@
+import org.junit.jupiter.api.Test;
+
+
+import javafx.geometry.Point2D;
+import javafx.scene.control.Button;
+import javafx.scene.robot.Robot;
+
+public class PaletteOutilsTestFX extends TestFXBase {
+
+	@Test
+	void testDrawingCircle() {
+		// la methode find est utilisée pour trouver un element a partir de son id si on utilise #
+		// ou bien le text qu'il contient si on ecrit directement le text.
+		// le type de retour est node ..
+		Button buttonCircle = find("#circleBtn") ;
+		
+		// on donne l'element sur lequel on veut cliquer
+		clickOn(buttonCircle);
+		
+		//on donne le lieu ou cliquer
+		clickOn(new Point2D(400, 400));
+
+		
+		// vous pouvez utiliser les methode drag, press ... 
+		sleep(2000);
+		// 
+	}
+	
+}

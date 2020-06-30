@@ -1,0 +1,44 @@
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import application.controller.CanevasController;
+import application.controller.ChangesController;
+import application.model.ColorFiller;
+import application.model.Layout;
+import application.model.MyRectangle;
+import application.model.MyShape;
+import application.model.SingleShape;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+
+public class CanevasControllerTest {
+
+	CanevasController canevasController;
+	@BeforeEach
+	public void initialize() {
+		canevasController = new CanevasController();
+		canevasController.setLayoutsList(new ArrayList<>());
+		Layout layout = new Layout("Layout0", true);
+		SingleShape shape = new MyRectangle();
+		shape.setProperties(0d, 0d, 100d, 100d, Color.BLACK, 0d, new ColorFiller(Color.BLACK, shape), 1d, shape.getLayout());
+		shape.createShape(true, true, null);
+		layout.addShape(shape);
+		shape.setSelected(true);
+		canevasController.setCurrLayout(layout);
+		canevasController.getLayoutsList().add(layout);
+
+		canevasController.setOverlay(new AnchorPane());
+
+		canevasController.setchangesController(new ChangesController(canevasController));
+	}
+	
+	@Test
+	public void changeSelectedStrokeColorTest() {
+		canevasController.changeSelectedStrokeColor(Color.BLUE);
+		assertTrue(canevasController.getStrokeColorPicker().equals(Color.BLUE));
+	}
+}

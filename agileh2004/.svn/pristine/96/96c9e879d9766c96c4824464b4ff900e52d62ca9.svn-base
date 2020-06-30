@@ -1,0 +1,109 @@
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.jupiter.api.Test;
+
+
+public class PaletteOutilsTestFX extends TestFXBase {
+
+	@Test
+	void testDrawingCircle() {
+		
+		assertTrue(mainController.getCanevasController().getAllShapes().isEmpty());
+		
+		// on donne l'element sur lequel on veut cliquer
+		clickOn("#circleBtn");
+		
+		pressDragRelease();
+		
+		// vous pouvez acceder au different controleur à partir du mainController
+		assertFalse(mainController.getCanevasController().getAllShapes().isEmpty());
+		assertTrue(mainController.getCanevasController().getAllShapes().size() == 1);
+	}
+	
+	@Test
+	void testDrawingEllipse() {
+		assertTrue(mainController.getCanevasController().getAllShapes().isEmpty());
+		
+		clickOn("#ellipseBtn");
+		
+		pressDragRelease();
+
+		assertFalse(mainController.getCanevasController().getAllShapes().isEmpty());
+		assertTrue(mainController.getCanevasController().getAllShapes().size() == 1);
+		
+	}
+	
+	@Test
+	void testDrawingRectangle() {
+		assertTrue(mainController.getCanevasController().getAllShapes().isEmpty());
+		
+		clickOn("#rectBtn");
+		
+		pressDragRelease();
+
+		assertFalse(mainController.getCanevasController().getAllShapes().isEmpty());
+		assertTrue(mainController.getCanevasController().getAllShapes().size() == 1);
+		
+	}
+	
+	@Test
+	void testDrawingRoundedRectangle() {
+		assertTrue(mainController.getCanevasController().getAllShapes().isEmpty());
+		
+		clickOn("#roundedRectBtn");
+		
+		pressDragRelease();
+
+		assertFalse(mainController.getCanevasController().getAllShapes().isEmpty());
+		assertTrue(mainController.getCanevasController().getAllShapes().size() == 1);
+		
+	}
+	
+	@Test
+	void testDrawingLine() {
+		assertTrue(mainController.getCanevasController().getAllShapes().isEmpty());
+		
+		clickOn("#lineBtn");
+		
+		pressDragRelease();
+
+		assertFalse(mainController.getCanevasController().getAllShapes().isEmpty());
+		assertTrue(mainController.getCanevasController().getAllShapes().size() == 1);
+		
+	}
+	
+	@Test
+	void testResizing() {		
+		clickOn("#lineBtn");
+		
+		moveBy(200, 50);
+		
+		drag();
+		
+		moveBy(50, 50);
+		
+		drop();
+
+		sleep(1000);
+	}
+	
+	
+	
+
+	private void pressDragRelease() {
+		//Deplacer la souris de +200 sur x et +50 sur y et pressMouse 
+		moveBy(200, 50);
+		
+		//DragMouse
+		drag();
+		
+		//Deplacer la souris de +50 sur x et +50 sur y et pressMouse
+		moveBy(50, 50);
+		
+		//DragMouse
+		drop();
+
+	}
+	
+}

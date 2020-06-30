@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="40.0" maxWidth="-Infinity" minHeight="40.0" minWidth="-Infinity" prefHeight="40.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.PalettePatternsUIController">
+   <children>
+      <Pane fx:id="pane" maxHeight="40.0" maxWidth="-Infinity" minHeight="40.0" minWidth="-Infinity" prefHeight="40.0" prefWidth="770.0" AnchorPane.leftAnchor="30.0">
+         <children>
+            <HBox fx:id="hBox" maxHeight="40.0" maxWidth="-Infinity" minHeight="40.0" minWidth="-Infinity" prefHeight="40.0" prefWidth="770.0">
+               <children>
+                  <Button fx:id="undoPalette" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#undo" prefHeight="30.0" prefWidth="30.0" text="Button">
+                     <HBox.margin>
+                        <Insets right="3.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/undo.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Undo" />
+                     </tooltip>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="redoPalette" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#redo" prefHeight="30.0" prefWidth="30.0">
+                     <HBox.margin>
+                        <Insets right="3.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/redo.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Redo" />
+                     </tooltip>
+                  </Button>
+                  <Separator orientation="VERTICAL" prefHeight="200.0">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </Separator>
+                  <Button fx:id="image1" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#imageClicked" prefHeight="30.0" prefWidth="30.0">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/image1.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="3.0" />
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip text="To fill shape with pattern" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="image2" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#imageClicked" prefHeight="30.0" prefWidth="30.0">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/image2.jpg" />
+                           </image></ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="3.0" />
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip text="To fill shape with pattern" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="image3" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#imageClicked" prefHeight="30.0" prefWidth="30.0">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/image3.jpg" />
+                           </image></ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="3.0" />
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip text="To fill shape with pattern" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="image4" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#imageClicked" prefHeight="30.0" prefWidth="30.0">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/image4.jpg" />
+                           </image></ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="3.0" />
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip text="To fill shape with pattern" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="image5" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#imageClicked" prefHeight="30.0" prefWidth="30.0">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/image5.jpg" />
+                           </image></ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="3.0" />
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip text="To fill shape with pattern" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="image6" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#imageClicked" prefHeight="30.0" prefWidth="30.0">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/image6.jpg" />
+                           </image></ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets right="3.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets right="3.0" />
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip text="To fill shape with pattern" />
+                     </tooltip>
+                  </Button>
+                  <Separator maxHeight="30.0" minHeight="30.0" orientation="VERTICAL" prefHeight="30.0">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </Separator>
+                  <Label maxHeight="30.0" minHeight="30.0" prefHeight="30.0" text="Shape Color:">
+                     <HBox.margin>
+                        <Insets right="2.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Shape color" />
+                     </tooltip></Label>
+                  <ColorPicker fx:id="colorPicker" maxHeight="30.0" maxWidth="50.0" minHeight="30.0" minWidth="50.0" onAction="#pickerShapeColor" prefHeight="30.0" prefWidth="50.0">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip text="Shape color" />
+                     </tooltip></ColorPicker>
+                  <CheckBox fx:id="filled" maxHeight="30.0" minHeight="30.0" mnemonicParsing="false" onAction="#filledChecked" prefHeight="30.0" text="filled Shape">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Select it to fill new shape or unselect it to let the new shape color transparent" />
+                     </tooltip></CheckBox>
+                  <Label maxHeight="30.0" minHeight="30.0" prefHeight="30.0" text="stroke Color:">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Stroke color" />
+                     </tooltip></Label>
+                  <ColorPicker fx:id="strokeColor" maxHeight="30.0" maxWidth="50.0" minHeight="30.0" minWidth="50.0" onAction="#strokShapeColor" prefHeight="30.0" prefWidth="50.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip text="Stroke color" />
+                     </tooltip></ColorPicker>
+                  <Separator maxHeight="30.0" minHeight="30.0" orientation="VERTICAL" prefHeight="30.0">
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding></Separator>
+                  <Button fx:id="backwardPalette" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#moveSelectedBackward" prefHeight="30.0" prefWidth="30.0">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/backward.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets right="3.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets right="3.0" />
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip text="Move shape backward" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="forwardPalette" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#moveSelectedForward" prefHeight="30.0" prefWidth="30.0">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/forward.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets right="3.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets right="3.0" />
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip text="Move shape forward" />
+                     </tooltip>
+                  </Button>
+                  <Separator maxHeight="30.0" minHeight="30.0" orientation="VERTICAL" prefHeight="30.0">
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding></Separator>
+                  <Button fx:id="historyPalette" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#historyToggle" prefHeight="30.0" prefWidth="30.0">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/history.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets right="3.0" />
+                     </padding>
+                     <tooltip>
+                        <Tooltip text="Toggle history dialog" />
+                     </tooltip>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

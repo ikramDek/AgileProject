@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE preferences SYSTEM "http://java.sun.com/dtd/preferences.dtd">
+<preferences EXTERNAL_XML_VERSION="1.0">
+  <root type="user">
+    <map/>
+    <node name="application">
+      <map/>
+      <node name="model">
+        <map>
+          <entry key="saveRepository" value="/Users/Meftahi/Documents"/>
+          <entry key="sceneHeight" value="462.0"/>
+          <entry key="gridActivated" value="false"/>
+          <entry key="filled" value="true"/>
+          <entry key="zoomValue" value="1.0"/>
+          <entry key="shapeFillColorG" value="0.0"/>
+          <entry key="strokeSize" value="8.0"/>
+          <entry key="rulerShown" value="Cm"/>
+          <entry key="shapeFillColorR" value="0.0"/>
+          <entry key="shapeFillColorB" value="0.0"/>
+          <entry key="shapeStrokeColorB" value="0.0"/>
+          <entry key="sceneWidth" value="735.0"/>
+          <entry key="shapeStrokeColorG" value="0.0"/>
+          <entry key="shapeStrokeColorR" value="1.0"/>
+        </map>
+      </node>
+    </node>
+  </root>
+</preferences>
